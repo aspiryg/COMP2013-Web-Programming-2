@@ -57,3 +57,22 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.card-sale {
+  color: red;
+}
+
+.card-dale-glow {
+  box-shadow: 0 0 10px 5px #61dafbaa;
+}
+
+@media screen and (max-width: 600px) {
+  .main-container {
+    flex-direction: column;
+    width: 300px;
+  }
+  .card-component {
+    width: 80%;
+    margin: 20px;
+  }
+}

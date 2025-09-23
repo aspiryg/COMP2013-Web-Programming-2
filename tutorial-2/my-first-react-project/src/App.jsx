@@ -6,7 +6,12 @@ function App() {
       <h1>Diamond World</h1>
       <div className="main-container">
         <Card image="src\assets\images\1.jpg" name="Princess" price="$1,350" />
-        <Card image="src\assets\images\2.jpg" name="Swan" price="$900" />
+        <Card
+          image="src\assets\images\2.jpg"
+          name="Swan"
+          price="$900"
+          sale={true}
+        />
         <Card
           image="src\assets\images\3.jpg"
           name="Collection"
