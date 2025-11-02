@@ -31,10 +31,16 @@ export default function FakeApiApp() {
 
   const handleAddPost = (e) => {
     e.preventDefault();
+    const isValid = newPost.title !== "" && newPost.body !== "";
+    const isDuplicate = data.some((post) => post.title === newPost.title);
+    // ensure unique id for new post because I implemented delete functionality which may cause id conflicts.
+    // If there is no delete functionality, I could have simply used data.length + 1 as id for new post.
+    const newPostId =
+      data.length > 0 ? Math.max(...data.map((post) => post.id)) + 1 : 1;
 
-    newPost.title !== "" && newPost.body !== ""
+    isValid && !isDuplicate
       ? (setData((preData) => [
-          { ...newPost, id: data.length + 1, userId: 1 },
+          { ...newPost, id: newPostId, userId: 1 },
           ...preData,
         ]),
         setNewPost(initialPostState))
@@ -51,7 +57,7 @@ export default function FakeApiApp() {
     }
   };
 
-  //   console.log(newPost);
+  // console.log(newPost);
   // console.log(data);
 
   return (
