@@ -27,11 +27,11 @@ export default function ContactsApp() {
   }, []);
 
   // Handlers
-  // get all contacts
+  // get all contacts // This handler should trigger a re-render whenever the it's called
   const fetchContacts = async () => {
     try {
       const response = await axios.get(BaseURL);
-      setContactsData(response.data.reverse()); // The reverse method just to show the newly added contact on the top
+      setContactsData(response.data.reverse()); // The reverse method just to show the newly added contact on the top and I can see it easily during testing
       setLoading(false);
     } catch (error) {
       console.error("Error fetching contacts:", error);
@@ -87,6 +87,13 @@ export default function ContactsApp() {
       console.log("Contact deleted:", response.data);
       // Refresh contacts list
       fetchContacts();
+
+      // Another way is to update the state directly without re-fetching
+      /*
+      setContactsData((prevContacts) =>
+        prevContacts.filter((contact) => contact._id !== id)
+      );
+      */
     } catch (error) {
       console.error(error);
     }
